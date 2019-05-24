@@ -1,8 +1,6 @@
-
-
 function getNotes(){
 
-note = "Your notes..."
+let note = "Your notes..."
 
 return note
 
