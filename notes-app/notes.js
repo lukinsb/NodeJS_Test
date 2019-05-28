@@ -1,13 +1,7 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-const getNotes = function (){
-
-let note = "Your notes..."
-
-return note
-
-}
+const getNotes =  () => {let note = "Your notes..."}
 
 const addNote = (title, body) => {
     const notes = loadNotes()
@@ -42,7 +36,7 @@ const loadNotes = () => {
  
 }
 
-const removeNote = function(title){
+const removeNote = (title) => {
     
     const notes = loadNotes()
 
@@ -59,10 +53,24 @@ const removeNote = function(title){
 
 }
 
+const listNotes = () => {
+
+    console.log(chalk.bgBlue('Your Notes \n'))
+    let count = 1 
+    const notes = loadNotes()
+    notes.forEach((note) => {
+    console.log(count + '. ' + note.title)
+    count ++
+    })
+      
+
+}
+
 
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     loadNotes: loadNotes,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
