@@ -1,8 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-const getNotes =  () => {let note = "Your notes..."}
-
 const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNotes = notes.filter((note) => note.title === title)
@@ -66,11 +64,27 @@ const listNotes = () => {
 
 }
 
+const readNote = (title) => {
 
+    
+    const notes = loadNotes()
+    const noteToKeep = notes.filter((note) => note.title === title)
+
+    if (noteToKeep.length === 1){
+        console.log(chalk.bgBlue('Showing Note \n'))
+        console.log("Title: " + noteToKeep[Object.keys(noteToKeep)[0]].title)  
+        console.log("Body: " + noteToKeep[Object.keys(noteToKeep)[0]].body)
+    } else {
+        console.log(chalk.bgRed('There is no note with this title!\n'))
+        listNotes()
+    }
+}
+      
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     loadNotes: loadNotes,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
