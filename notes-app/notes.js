@@ -4,6 +4,8 @@ const chalk = require('chalk')
 const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNotes = notes.filter((note) => note.title === title)
+
+    debugger
     
     if(duplicateNotes.length === 0){
         notes.push({
@@ -81,7 +83,6 @@ const readNote = (title) => {
 }
       
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     loadNotes: loadNotes,
     removeNote: removeNote,
